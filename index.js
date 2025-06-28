@@ -3,14 +3,13 @@ Autores del codigo:
 Adahir y Ale 
 */
 //require('dotenv').config();
-
+require('dotenv').config();
 const{Client,IntentsBitField} = require('discord.js');
 const {Client:NotionClient} = require('@notionhq/client');
 const fs = require ('fs');
 
 const notion = new NotionClient({
-    auth: "secret_1BV3mDZG3jcrAEiH6V3VSJJICvDLl9S6Jwwpgs1ytph",
-
+    auth: process.env.NOTION_API_KEY,
 })
 
 const client = new Client({
@@ -47,7 +46,7 @@ client.on('messageCreate', (message) => {
   }
 });
 
-client.login('[REMOVED]'); //Here is the token of the bot
+client.login(process.env.TOKEN); //Here is the token of the bot
 
 //Funcion manda un bloque de texto en notion
 function sendMessage({mensaje}){
